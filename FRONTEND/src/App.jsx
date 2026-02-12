@@ -5,7 +5,6 @@ import Features from "./sections/why-cosmic-watch";
 import HeroSection from "./sections/hero-section";
 import Carousul from "./sections/feature-preview";
 import About from "./pages/About";
-import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
 import AsteroidDetails from "./pages/AsteroidDetails";
 import Watchlist from "./pages/Watchlist";
@@ -24,7 +23,7 @@ const ProtectedRoute = ({ children }) => {
     const { currentUser } = useAuth();
 
     if (!currentUser) {
-        return <Navigate to="/auth" replace />;
+        return <Navigate to="/login" replace />;
     }
 
     return children;
@@ -32,7 +31,7 @@ const ProtectedRoute = ({ children }) => {
 
 export default function Page() {
     const location = useLocation();
-    const isAuthPage = location.pathname === "/auth";
+    const isAuthPage = location.pathname === "/login" || location.pathname === "/register";
     const hideNavbar = isAuthPage || isDashboardAppRoute(location.pathname);
 
     // Scroll to top on route change
@@ -60,7 +59,6 @@ export default function Page() {
                     }
                 />
                 <Route path="/about" element={<About />} />
-                <Route path="/auth" element={<Auth />} />
                 <Route
                     path="/dashboard"
                     element={

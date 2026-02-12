@@ -79,7 +79,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Rocket } from 'lucide-react';
+import { Rocket, ArrowLeft } from 'lucide-react';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -100,7 +100,14 @@ const Login = () => {
   };
 
   return (
-    <div className="pt-20 min-h-screen flex items-center justify-center">
+    <div className="pt-20 min-h-screen flex items-center justify-center relative">
+      <Link
+        to="/"
+        className="absolute top-24 left-4 md:left-8 flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
+      >
+        <ArrowLeft size={20} />
+        <span>Back</span>
+      </Link>
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
